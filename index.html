@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techyra Solutions | Digital Future</title>
+    <title>Techyra | Premier Software Engineering</title>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Inter:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -15,121 +15,140 @@
         :root {
             --primary: #00f2ff;
             --secondary: #7000ff;
-            --dark: #050505;
-            --glass: rgba(255, 255, 255, .06);
+            --bg: #030303;
+            --card-glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-dim: #a1a1a1;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box
+            box-sizing: border-box;
+            outline: none;
         }
 
         html {
-            scroll-behavior: smooth
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Inter, sans-serif;
-            background: var(--dark);
-            color: #fff;
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* ===== Scroll Progress ===== */
+        /* ===== Advanced Background ===== */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 10%, rgba(112, 0, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(0, 242, 255, 0.08) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .mesh-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
         #progress {
             position: fixed;
             top: 0;
             left: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 10000;
             width: 0%;
-            z-index: 2000;
+            box-shadow: 0 0 10px var(--primary);
         }
 
-        /* ===== Header ===== */
+        /* ===== Premium Navbar ===== */
         header {
             position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 20px 8%;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, .6);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            transition: .3s;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            z-index: 2000;
+            transition: var(--ease);
         }
 
         header.shrink {
-            padding: 12px 8%;
-            background: rgba(0, 0, 0, .9);
+            top: 0;
+            width: 100%;
+            border-radius: 0;
+            border-top: 0;
         }
 
         .logo {
-            font-family: Rajdhani;
-            font-size: 24px;
+            font-family: 'Rajdhani';
+            font-size: 26px;
+            font-weight: 700;
             text-decoration: none;
             color: #fff;
+            letter-spacing: 1px;
         }
 
         .logo span {
-            color: var(--primary)
+            color: var(--primary);
         }
 
-        /* ===== Desktop Nav ===== */
         nav {
             display: flex;
-            gap: 30px;
+            gap: 10px;
         }
 
         nav a {
-            color: #fff;
+            color: var(--text-dim);
             text-decoration: none;
-            font-size: 14px;
-            letter-spacing: 1px;
-            transition: .3s;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 10px;
+            transition: 0.3s;
         }
 
         nav a:hover {
-            color: var(--primary)
+            color: var(--primary);
+            background: rgba(0, 242, 255, 0.05);
         }
 
-        /* ===== Hamburger ===== */
-        .menu-btn {
-            display: none;
-            font-size: 22px;
-            cursor: pointer;
-        }
-
-        /* ===== Mobile Nav ===== */
-        .mobile-nav {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 260px;
-            height: 100vh;
-            background: #0c0c0c;
-            padding: 80px 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            transition: .4s;
-            z-index: 1500;
-        }
-
-        .mobile-nav.active {
-            right: 0
-        }
-
-        .mobile-nav a {
+        nav a.active {
             color: #fff;
-            text-decoration: none;
-            font-size: 18px;
+            background: var(--secondary);
         }
 
-        /* ===== Hero ===== */
+        /* ===== Hero Section ===== */
+        section {
+            padding: 140px 10%;
+            position: relative;
+        }
+
         .hero {
             min-height: 100vh;
             display: flex;
@@ -137,117 +156,254 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
-            background: radial-gradient(circle at top right, #1a1a2e, var(--dark));
+        }
+
+        .badge {
+            padding: 6px 16px;
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .hero h1 {
-            font-family: Rajdhani;
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            background: linear-gradient(to right, #fff, var(--primary));
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to bottom, #fff, #888);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            max-width: 600px;
-            color: #aaa;
-            margin: 20px 0;
+            max-width: 650px;
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
         }
 
-        .btn-main {
-            padding: 14px 35px;
-            border-radius: 50px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: #fff;
+        .btn-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-p {
+            padding: 16px 36px;
+            background: #fff;
+            color: #000;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
-            transition: .3s;
+            font-weight: 700;
+            transition: 0.3s;
         }
 
-        .btn-main:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 242, 255, .5);
+        .btn-p:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
         }
 
-        /* ===== Sections ===== */
-        section {
-            padding: 100px 8%
+        .btn-s {
+            padding: 16px 36px;
+            background: var(--card-glass);
+            color: #fff;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 1px solid var(--border);
+            transition: 0.3s;
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px
+        .btn-s:hover {
+            border-color: var(--primary);
+            background: rgba(0, 242, 255, 0.05);
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--glass);
-            border: 1px solid rgba(255, 255, 255, .08);
-            padding: 40px;
-            border-radius: 20px;
-            transition: .4s;
+        /* ===== Reveal Observer ===== */
+        .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
+            transition: 1s var(--ease);
         }
 
-        .card.show {
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .card:hover {
+        /* ===== Bento Grid (Services) ===== */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: minmax(200px, auto);
+            gap: 20px;
+        }
+
+        .bento-item {
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s var(--ease);
+        }
+
+        .bento-item:hover {
             border-color: var(--primary);
-            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.06);
+            transform: scale(1.02);
         }
 
-        .card i {
-            font-size: 35px;
+        .bento-item i {
+            font-size: 32px;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        /* ===== Stats ===== */
-        .stats {
-            background: #0c0c18;
-            text-align: center;
+        .bento-item.large {
+            grid-column: span 2;
         }
 
-        .counter {
-            font-size: 2.5rem;
+        /* ===== Projects (Glass Cards) ===== */
+        .project-card {
+            background: #0a0a0a;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: 0.5s var(--ease);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
+
+        .project-img {
+            height: 250px;
+            background: #111;
+            position: relative;
+        }
+
+        .project-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        /* ===== Software Showcase ===== */
+        .soft-card {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 30px;
+            background: linear-gradient(90deg, var(--card-glass), transparent);
+            border-radius: 20px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* ===== Tech Stack Pills ===== */
+        .stack-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .pill {
+            padding: 10px 20px;
+            background: var(--card-glass);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .pill:hover {
+            border-color: var(--primary);
             color: var(--primary);
-            font-family: Rajdhani;
         }
 
         /* ===== Footer ===== */
         footer {
-            padding: 60px 8%;
-            background: #000;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, .1);
+            padding: 100px 10% 40px;
+            background: #010101;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 20px;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+
+        .footer-links a {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+            transform: translateX(5px);
         }
 
         /* ===== Responsive ===== */
-        @media(max-width:768px) {
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-item.large {
+                grid-column: span 1;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            header {
+                width: 95%;
+                padding: 15px 20px;
+            }
+
             nav {
-                display: none
-            }
-
-            .menu-btn {
-                display: block
-            }
-
-            section {
-                padding: 80px 6%
-            }
-
-            .hero {
-                padding-top: 100px
+                display: none;
             }
         }
     </style>
@@ -256,137 +412,225 @@
 <body>
 
     <div id="progress"></div>
+    <div class="bg-gradient"></div>
+    <div class="mesh-grid"></div>
 
-    <header>
+    <header id="navbar">
         <a href="#" class="logo">TECHYRA<span>.</span></a>
-
         <nav>
             <a href="#home">Home</a>
             <a href="#services">Services</a>
-            <a href="#stats">Stats</a>
+            <a href="#projects">Work</a>
+            <a href="#software">Software</a>
+            <a href="#tools">Develop</a>
+            <a href="#clients">Partners</a>
             <a href="#contact">Contact</a>
         </nav>
-
-        <div class="menu-btn"><i class="fa fa-bars"></i></div>
+        <div style="font-size: 20px; cursor: pointer;" class="menu-icon"><i class="fa fa-bars"></i></div>
     </header>
 
-    <div class="mobile-nav">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#stats">Stats</a>
-        <a href="#contact">Contact</a>
-    </div>
-
     <section class="hero" id="home">
-        <h1>Techyra Solutions</h1>
-        <p>We build next-generation software, AI-driven architectures and scalable cloud ecosystems.</p>
-        <a href="#services" class="btn-main">Explore Services</a>
+        <div class="badge reveal">New: Techyra Cloud 2.0 Released</div>
+        <h1 class="reveal">Built for the<br><span>Next Generation</span></h1>
+        <p class="reveal">We design and deploy industrial-grade software solutions, high-performance AI architectures,
+            and cloud-native systems for industry titans.</p>
+        <div class="btn-group reveal">
+            <a href="#contact" class="btn-p">Start Project</a>
+            <a href="#projects" class="btn-s">View Work</a>
+        </div>
     </section>
 
     <section id="services">
-        <div class="section-title">
-            <h2>Our Services</h2>
+        <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: 3rem;">Expertise</h2>
         </div>
-        <div class="grid">
-            <div class="card">
-                <i class="fa fa-code"></i>
-                <h3>Web Development</h3>
-                <p>Modern full stack web applications with high performance.</p>
+        <div class="bento-grid">
+            <div class="bento-item large reveal">
+                <i class="fa fa-code-branch"></i>
+                <h3>Custom Engineering</h3>
+                <p>Scaling complex logic into readable, maintainable, and high-performance codebases across all
+                    platforms.</p>
             </div>
-            <div class="card">
+            <div class="bento-item reveal">
+                <i class="fa fa-bolt"></i>
+                <h3>Fast Prototyping</h3>
+                <p>Move from concept to MVP in weeks, not months.</p>
+            </div>
+            <div class="bento-item reveal">
+                <i class="fa fa-shield-halved"></i>
+                <h3>Security Ops</h3>
+                <p>Hardened infrastructure with zero-trust protocols.</p>
+            </div>
+            <div class="bento-item large reveal">
                 <i class="fa fa-brain"></i>
-                <h3>AI Systems</h3>
-                <p>Data-driven automation & machine learning integrations.</p>
-            </div>
-            <div class="card">
-                <i class="fa fa-cloud"></i>
-                <h3>Cloud Infrastructure</h3>
-                <p>Secure & scalable cloud deployment architecture.</p>
+                <h3>Cognitive AI</h3>
+                <p>Deploying machine learning models that optimize real-time business decisions and user experiences.
+                </p>
             </div>
         </div>
     </section>
 
-    <section class="stats" id="stats">
-        <div class="grid">
-            <div>
-                <h2 class="counter" data-target="120">0</h2>
-                <p>Projects</p>
+    <section id="projects">
+        <div class="reveal" style="margin-bottom: 60px;">
+            <h2 style="font-size: 2.5rem;">Selected Work</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+            <div class="project-card reveal">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h4>Aero-Dynamics Portal</h4>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-top: 10px;">A high-load logistics tracking
+                        system for aviation.</p>
+                </div>
             </div>
-            <div>
-                <h2 class="counter" data-target="80">0</h2>
-                <p>Clients</p>
+            <div class="project-card reveal" style="transition-delay: 0.1s;">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h4>Crypto-Vault Pro</h4>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-top: 10px;">Institutional grade digital
+                        asset management.</p>
+                </div>
             </div>
-            <div>
-                <h2 class="counter" data-target="10">0</h2>
-                <p>Years</p>
+            <div class="project-card reveal" style="transition-delay: 0.2s;">
+                <div class="project-img"></div>
+                <div class="project-info">
+                    <h4>Neural-Link Interface</h4>
+                    <p style="color: var(--text-dim); font-size: 14px; margin-top: 10px;">AI dashboard for clinical
+                        research data.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <h3>Let’s Build The Future</h3>
-        <p style="color:#666;margin-top:10px">© 2024 Techyra Solutions</p>
+    <section id="software">
+        <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: 2.5rem;">Proprietary Software</h2>
+        </div>
+        <div class="reveal">
+            <div class="soft-card">
+                <i class="fa fa-cube" style="font-size: 40px; color: var(--primary);"></i>
+                <div>
+                    <h3>Titan ERP</h3>
+                    <p style="color: var(--text-dim);">The all-in-one resource planning tool for manufacturing giants.
+                    </p>
+                </div>
+            </div>
+            <div class="soft-card">
+                <i class="fa fa-microchip" style="font-size: 40px; color: var(--primary);"></i>
+                <div>
+                    <h3>Lumina AI</h3>
+                    <p style="color: var(--text-dim);">Automated customer support core with 99.9% sentiment accuracy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools">
+        <div class="reveal" style="text-align: center; margin-bottom: 50px;">
+            <h2>Development Stack</h2>
+        </div>
+        <div class="stack-flex reveal">
+            <div class="pill"><i class="fab fa-react"></i> React Native</div>
+            <div class="pill"><i class="fab fa-node-js"></i> Node.js</div>
+            <div class="pill"><i class="fab fa-python"></i> Python / PyTorch</div>
+            <div class="pill"><i class="fab fa-aws"></i> AWS Lambda</div>
+            <div class="pill"><i class="fab fa-docker"></i> Docker</div>
+            <div class="pill"><i class="fab fa-rust"></i> Rust</div>
+            <div class="pill"><i class="fa fa-database"></i> PostgreSQL</div>
+            <div class="pill"><i class="fa fa-code"></i> TypeScript</div>
+        </div>
+    </section>
+
+    <section id="clients" style="text-align: center;">
+        <div class="reveal" style="margin-bottom: 50px;">
+            <p style="color: var(--primary); font-weight: 700; letter-spacing: 2px;">GLOBAL PARTNERS</p>
+        </div>
+        <div class="stack-flex reveal" style="opacity: 0.4; gap: 60px;">
+            <span style="font-size: 1.5rem; font-weight: 800;">GOOGLE</span>
+            <span style="font-size: 1.5rem; font-weight: 800;">MICROSOFT</span>
+            <span style="font-size: 1.5rem; font-weight: 800;">STRIPE</span>
+            <span style="font-size: 1.5rem; font-weight: 800;">NVIDIA</span>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div style="background: #fff; color: #000; padding: 80px; border-radius: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;"
+            class="reveal">
+            <div>
+                <h2 style="font-size: 3rem; line-height: 1;">Ready to<br>Transform?</h2>
+                <p style="margin-top: 20px; font-weight: 600;">Reach out to our engineering lead today.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" placeholder="Your Name"
+                    style="padding: 15px; border: 1px solid #ddd; border-radius: 10px;">
+                <input type="email" placeholder="Work Email"
+                    style="padding: 15px; border: 1px solid #ddd; border-radius: 10px;">
+                <button
+                    style="padding: 15px; background: #000; color: #fff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer;">Send
+                    Proposal</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <div>
+                <div class="footer-logo">TECHYRA<span>.</span></div>
+                <p style="color: var(--text-dim); font-size: 14px;">Building the infrastructure of tomorrow, today.
+                    Leading the way in digital transformation.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Security</a>
+            </div>
+            <div class="footer-links">
+                <h4>Ecosystem</h4>
+                <a href="#">Titan ERP</a>
+                <a href="#">Lumina AI</a>
+                <a href="#">Guard Pro</a>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter / X</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+        <div
+            style="text-align: center; border-top: 1px solid var(--border); padding-top: 30px; color: #444; font-size: 12px;">
+            &copy; 2024 TECHYRA SOLUTIONS. PRIVACY POLICY | TERMS OF SERVICE
+        </div>
     </footer>
 
     <script>
+        // Scroll Logic
+        const nav = document.getElementById('navbar');
+        const progress = document.getElementById('progress');
 
-        /* ===== Scroll Progress ===== */
-        window.addEventListener("scroll", () => {
-            let scrollTop = document.documentElement.scrollTop;
+        window.onscroll = () => {
+            // Navbar
+            if (window.scrollY > 50) nav.classList.add('shrink');
+            else nav.classList.remove('shrink');
+
+            // Progress
+            let winScroll = document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById("progress").style.width = (scrollTop / height) * 100 + "%";
-        });
+            progress.style.width = (winScroll / height) * 100 + "%";
 
-        /* ===== Navbar Shrink ===== */
-        window.addEventListener("scroll", () => {
-            document.querySelector("header").classList.toggle("shrink", window.scrollY > 50);
-        });
-
-        /* ===== Mobile Menu ===== */
-        const menuBtn = document.querySelector(".menu-btn");
-        const mobileNav = document.querySelector(".mobile-nav");
-
-        menuBtn.onclick = () => {
-            mobileNav.classList.toggle("active");
+            // Reveal
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) el.classList.add('active');
+            });
         };
 
-        /* ===== Scroll Reveal ===== */
-        const cards = document.querySelectorAll(".card");
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                }
-            });
-        }, { threshold: .2 });
-
-        cards.forEach(card => observer.observe(card));
-
-        /* ===== Counter Animation ===== */
-        const counters = document.querySelectorAll(".counter");
-        const counterObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    let counter = entry.target;
-                    let target = +counter.dataset.target;
-                    let count = 0;
-                    let update = () => {
-                        count += target / 100;
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count);
-                            requestAnimationFrame(update);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    update();
-                    counterObserver.unobserve(counter);
-                }
-            });
-        }, { threshold: .5 });
-
-        counters.forEach(counter => counterObserver.observe(counter));
-
+        // Initialize first reveal
+        window.onload = () => {
+            window.dispatchEvent(new Event('scroll'));
+        };
     </script>
 </body>
 
