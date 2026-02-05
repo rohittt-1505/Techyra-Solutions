@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techyra | Premier Software Engineering</title>
+    <title>Techyra | Enterprise Web & Software Architecture</title>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
@@ -15,19 +15,17 @@
         :root {
             --primary: #00f2ff;
             --secondary: #7000ff;
-            --bg: #030303;
-            --card-glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --text-main: #ffffff;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, .04);
+            --border: rgba(255, 255, 255, .08);
             --text-dim: #a1a1a1;
-            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease: cubic-bezier(.23, 1, .32, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            outline: none;
         }
 
         html {
@@ -35,67 +33,60 @@
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text-main);
+            background: var(--bg);
+            color: #fff;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
-        /* ===== Advanced Background ===== */
+        /* Background */
         .bg-gradient {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background:
-                radial-gradient(circle at 10% 10%, rgba(112, 0, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 90%, rgba(0, 242, 255, 0.08) 0%, transparent 40%);
-            z-index: -1;
+                radial-gradient(circle at 10% 10%, rgba(112, 0, 255, .08), transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(0, 242, 255, .08), transparent 40%);
+            z-index: -2;
         }
 
         .mesh-grid {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             background-image: radial-gradient(var(--border) 1px, transparent 1px);
             background-size: 40px 40px;
+            opacity: .5;
             z-index: -1;
-            opacity: 0.5;
         }
 
+        /* Progress */
         #progress {
             position: fixed;
             top: 0;
             left: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
-            z-index: 10000;
             width: 0%;
-            box-shadow: 0 0 10px var(--primary);
+            z-index: 9999;
         }
 
-        /* ===== Premium Navbar ===== */
+        /* Navbar */
         header {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
+            width: 92%;
             max-width: 1200px;
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 10, 0.7);
+            background: rgba(10, 10, 10, .7);
             backdrop-filter: blur(20px);
             border: 1px solid var(--border);
             border-radius: 20px;
+            transition: .4s var(--ease);
             z-index: 2000;
-            transition: var(--ease);
         }
 
         header.shrink {
@@ -107,11 +98,10 @@
 
         .logo {
             font-family: 'Rajdhani';
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
             text-decoration: none;
             color: #fff;
-            letter-spacing: 1px;
         }
 
         .logo span {
@@ -120,7 +110,7 @@
 
         nav {
             display: flex;
-            gap: 10px;
+            gap: 5px;
         }
 
         nav a {
@@ -128,196 +118,152 @@
             text-decoration: none;
             font-size: 13px;
             font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 10px;
-            transition: 0.3s;
+            padding: 8px 14px;
+            border-radius: 8px;
+            transition: .3s;
         }
 
         nav a:hover {
             color: var(--primary);
-            background: rgba(0, 242, 255, 0.05);
+            background: rgba(0, 242, 255, .05);
         }
 
-        nav a.active {
-            color: #fff;
-            background: var(--secondary);
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
         }
 
-        /* ===== Hero Section ===== */
-        section {
-            padding: 140px 10%;
-            position: relative;
-        }
-
-        .hero {
-            min-height: 100vh;
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: #000;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
+            gap: 40px;
+            transition: .6s var(--ease);
+            z-index: 1500;
         }
 
-        .badge {
-            padding: 6px 16px;
-            background: var(--card-glass);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            font-family: 'Rajdhani';
+            font-size: 28px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 10%;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 6.5rem);
-            line-height: 1;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            line-height: 1.1;
             font-weight: 800;
-            margin-bottom: 30px;
-            letter-spacing: -2px;
+            margin-bottom: 25px;
         }
 
         .hero h1 span {
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
         }
 
         .hero p {
-            max-width: 650px;
+            max-width: 600px;
             font-size: 1.1rem;
             color: var(--text-dim);
             margin-bottom: 40px;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn-p {
+        /* Buttons */
+        .btn {
             padding: 16px 36px;
-            background: #fff;
+            background: var(--primary);
             color: #000;
-            border-radius: 12px;
             text-decoration: none;
             font-weight: 700;
-            transition: 0.3s;
-        }
-
-        .btn-p:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-s {
-            padding: 16px 36px;
-            background: var(--card-glass);
-            color: #fff;
             border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            border: 1px solid var(--border);
-            transition: 0.3s;
+            display: inline-block;
         }
 
-        .btn-s:hover {
-            border-color: var(--primary);
-            background: rgba(0, 242, 255, 0.05);
-        }
-
-        /* ===== Reveal Observer ===== */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: 1s var(--ease);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== Bento Grid (Services) ===== */
+        /* Bento */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: minmax(200px, auto);
             gap: 20px;
         }
 
         .bento-item {
-            background: var(--card-glass);
+            background: var(--glass);
             border: 1px solid var(--border);
             border-radius: 24px;
             padding: 40px;
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s var(--ease);
+            transition: .3s;
         }
 
         .bento-item:hover {
+            transform: translateY(-5px);
             border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.06);
-            transform: scale(1.02);
-        }
-
-        .bento-item i {
-            font-size: 32px;
-            color: var(--primary);
-            margin-bottom: 20px;
         }
 
         .bento-item.large {
             grid-column: span 2;
         }
 
-        /* ===== Projects (Glass Cards) ===== */
-        .project-card {
-            background: #0a0a0a;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: 0.5s var(--ease);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--secondary);
-        }
-
-        .project-img {
-            height: 250px;
-            background: #111;
-            position: relative;
-        }
-
-        .project-img::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-        }
-
-        .project-info {
-            padding: 30px;
-        }
-
-        /* ===== Software Showcase ===== */
-        .soft-card {
-            display: flex;
-            align-items: center;
+        /* Pricing */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            padding: 30px;
-            background: linear-gradient(90deg, var(--card-glass), transparent);
-            border-radius: 20px;
-            border-left: 4px solid var(--primary);
-            margin-bottom: 20px;
         }
 
-        /* ===== Tech Stack Pills ===== */
+        .price-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            transition: .4s;
+        }
+
+        .price-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .price-card h3 {
+            font-family: 'Rajdhani';
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .cost {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        /* Stack */
         .stack-flex {
             display: flex;
             flex-wrap: wrap;
@@ -327,64 +273,107 @@
 
         .pill {
             padding: 10px 20px;
-            background: var(--card-glass);
+            background: var(--glass);
             border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
+            border-radius: 12px;
+            font-size: 14px;
         }
 
-        .pill:hover {
-            border-color: var(--primary);
-            color: var(--primary);
+        /* Contact */
+        .contact-hub {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            background: #fff;
+            color: #000;
+            border-radius: 40px;
+            padding: 60px;
         }
 
-        /* ===== Footer ===== */
+        .contact-hub input,
+        .contact-hub select,
+        .contact-hub textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            margin-bottom: 15px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+
+        /* Footer */
         footer {
-            padding: 100px 10% 40px;
-            background: #010101;
+            padding: 80px 10%;
+            background: #020202;
             border-top: 1px solid var(--border);
         }
 
-        .footer-main {
+        .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 60px;
-            margin-bottom: 60px;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
         }
 
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 20px;
+        /* Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 1s var(--ease);
         }
 
-        .footer-links h4 {
-            margin-bottom: 20px;
-            font-size: 14px;
-            text-transform: uppercase;
-            color: var(--primary);
+        .reveal.active {
+            opacity: 1;
+            transform: none;
         }
 
-        .footer-links a {
-            display: block;
-            margin-bottom: 12px;
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: 0.3s;
+        /* Responsive */
+        @media(max-width:1100px) {
+            .bento-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .bento-item.large {
+                grid-column: span 2;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
-        .footer-links a:hover {
-            color: #fff;
-            transform: translateX(5px);
-        }
+        @media(max-width:768px) {
 
-        /* ===== Responsive ===== */
-        @media (max-width: 1024px) {
+            header {
+                padding: 12px 20px;
+                width: 95%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero {
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero p {
+                max-width: 100%;
+            }
+
             .bento-grid {
                 grid-template-columns: 1fr;
             }
@@ -393,17 +382,29 @@
                 grid-column: span 1;
             }
 
-            .footer-main {
-                grid-template-columns: 1fr 1fr;
+            .contact-hub {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
             }
 
-            header {
-                width: 95%;
-                padding: 15px 20px;
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media(max-width:480px) {
+            section {
+                padding: 90px 6%;
             }
 
-            nav {
-                display: none;
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -417,221 +418,147 @@
 
     <header id="navbar">
         <a href="#" class="logo">TECHYRA<span>.</span></a>
+
         <nav>
             <a href="#home">Home</a>
             <a href="#services">Services</a>
-            <a href="#projects">Work</a>
-            <a href="#software">Software</a>
-            <a href="#tools">Develop</a>
-            <a href="#clients">Partners</a>
-            <a href="#contact">Contact</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#tools">Stack</a>
+            <a href="#contact">Hire Us</a>
         </nav>
-        <div style="font-size: 20px; cursor: pointer;" class="menu-icon"><i class="fa fa-bars"></i></div>
+
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </div>
     </header>
 
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="toggleMenu()">Home</a>
+        <a href="#services" onclick="toggleMenu()">Services</a>
+        <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+        <a href="#tools" onclick="toggleMenu()">Stack</a>
+        <a href="#contact" onclick="toggleMenu()">Hire Us</a>
+    </div>
+
     <section class="hero" id="home">
-        <div class="badge reveal">New: Techyra Cloud 2.0 Released</div>
-        <h1 class="reveal">Built for the<br><span>Next Generation</span></h1>
-        <p class="reveal">We design and deploy industrial-grade software solutions, high-performance AI architectures,
-            and cloud-native systems for industry titans.</p>
-        <div class="btn-group reveal">
-            <a href="#contact" class="btn-p">Start Project</a>
-            <a href="#projects" class="btn-s">View Work</a>
-        </div>
+        <h1 class="reveal">High-Performance <br><span>Digital Solutions</span></h1>
+        <p class="reveal">We architect, build, and scale premium web & software systems.</p>
+        <a href="#contact" class="btn reveal">Start a Project</a>
     </section>
 
     <section id="services">
-        <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-            <h2 style="font-size: 3rem;">Expertise</h2>
-        </div>
+        <h2 class="reveal" style="margin-bottom:40px;font-family:'Rajdhani';">Our Expertise</h2>
         <div class="bento-grid">
             <div class="bento-item large reveal">
-                <i class="fa fa-code-branch"></i>
-                <h3>Custom Engineering</h3>
-                <p>Scaling complex logic into readable, maintainable, and high-performance codebases across all
-                    platforms.</p>
+                <h3>Web Architecture</h3>
+                <p>Corporate websites and scalable platforms.</p>
             </div>
             <div class="bento-item reveal">
-                <i class="fa fa-bolt"></i>
-                <h3>Fast Prototyping</h3>
-                <p>Move from concept to MVP in weeks, not months.</p>
+                <h3>Backend & Cloud</h3>
+                <p>Secure API & server systems.</p>
             </div>
             <div class="bento-item reveal">
-                <i class="fa fa-shield-halved"></i>
-                <h3>Security Ops</h3>
-                <p>Hardened infrastructure with zero-trust protocols.</p>
+                <h3>App Development</h3>
+                <p>iOS & Android solutions.</p>
             </div>
             <div class="bento-item large reveal">
-                <i class="fa fa-brain"></i>
-                <h3>Cognitive AI</h3>
-                <p>Deploying machine learning models that optimize real-time business decisions and user experiences.
-                </p>
+                <h3>SaaS & Custom Tools</h3>
+                <p>Automation dashboards & enterprise tools.</p>
             </div>
         </div>
     </section>
 
-    <section id="projects">
-        <div class="reveal" style="margin-bottom: 60px;">
-            <h2 style="font-size: 2.5rem;">Selected Work</h2>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-            <div class="project-card reveal">
-                <div class="project-img"></div>
-                <div class="project-info">
-                    <h4>Aero-Dynamics Portal</h4>
-                    <p style="color: var(--text-dim); font-size: 14px; margin-top: 10px;">A high-load logistics tracking
-                        system for aviation.</p>
-                </div>
+    <section id="pricing">
+        <h2 class="reveal" style="text-align:center;margin-bottom:40px;font-family:'Rajdhani';">Project Tiers</h2>
+        <div class="price-grid">
+            <div class="price-card reveal">
+                <h3>Business</h3>
+                <div class="cost">$1500+</div>
             </div>
-            <div class="project-card reveal" style="transition-delay: 0.1s;">
-                <div class="project-img"></div>
-                <div class="project-info">
-                    <h4>Crypto-Vault Pro</h4>
-                    <p style="color: var(--text-dim); font-size: 14px; margin-top: 10px;">Institutional grade digital
-                        asset management.</p>
-                </div>
+            <div class="price-card featured reveal">
+                <h3>Enterprise</h3>
+                <div class="cost">$4500+</div>
             </div>
-            <div class="project-card reveal" style="transition-delay: 0.2s;">
-                <div class="project-img"></div>
-                <div class="project-info">
-                    <h4>Neural-Link Interface</h4>
-                    <p style="color: var(--text-dim); font-size: 14px; margin-top: 10px;">AI dashboard for clinical
-                        research data.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="software">
-        <div class="reveal" style="text-align: center; margin-bottom: 60px;">
-            <h2 style="font-size: 2.5rem;">Proprietary Software</h2>
-        </div>
-        <div class="reveal">
-            <div class="soft-card">
-                <i class="fa fa-cube" style="font-size: 40px; color: var(--primary);"></i>
-                <div>
-                    <h3>Titan ERP</h3>
-                    <p style="color: var(--text-dim);">The all-in-one resource planning tool for manufacturing giants.
-                    </p>
-                </div>
-            </div>
-            <div class="soft-card">
-                <i class="fa fa-microchip" style="font-size: 40px; color: var(--primary);"></i>
-                <div>
-                    <h3>Lumina AI</h3>
-                    <p style="color: var(--text-dim);">Automated customer support core with 99.9% sentiment accuracy.
-                    </p>
-                </div>
+            <div class="price-card reveal">
+                <h3>Retainer</h3>
+                <div class="cost">$800/mo</div>
             </div>
         </div>
     </section>
 
     <section id="tools">
-        <div class="reveal" style="text-align: center; margin-bottom: 50px;">
-            <h2>Development Stack</h2>
-        </div>
+        <h2 class="reveal" style="text-align:center;margin-bottom:40px;font-family:'Rajdhani';">Modern Stack</h2>
         <div class="stack-flex reveal">
-            <div class="pill"><i class="fab fa-react"></i> React Native</div>
-            <div class="pill"><i class="fab fa-node-js"></i> Node.js</div>
-            <div class="pill"><i class="fab fa-python"></i> Python / PyTorch</div>
-            <div class="pill"><i class="fab fa-aws"></i> AWS Lambda</div>
-            <div class="pill"><i class="fab fa-docker"></i> Docker</div>
-            <div class="pill"><i class="fab fa-rust"></i> Rust</div>
-            <div class="pill"><i class="fa fa-database"></i> PostgreSQL</div>
-            <div class="pill"><i class="fa fa-code"></i> TypeScript</div>
-        </div>
-    </section>
-
-    <section id="clients" style="text-align: center;">
-        <div class="reveal" style="margin-bottom: 50px;">
-            <p style="color: var(--primary); font-weight: 700; letter-spacing: 2px;">GLOBAL PARTNERS</p>
-        </div>
-        <div class="stack-flex reveal" style="opacity: 0.4; gap: 60px;">
-            <span style="font-size: 1.5rem; font-weight: 800;">GOOGLE</span>
-            <span style="font-size: 1.5rem; font-weight: 800;">MICROSOFT</span>
-            <span style="font-size: 1.5rem; font-weight: 800;">STRIPE</span>
-            <span style="font-size: 1.5rem; font-weight: 800;">NVIDIA</span>
+            <div class="pill">React</div>
+            <div class="pill">Node</div>
+            <div class="pill">Python</div>
+            <div class="pill">AWS</div>
+            <div class="pill">PostgreSQL</div>
+            <div class="pill">Docker</div>
         </div>
     </section>
 
     <section id="contact">
-        <div style="background: #fff; color: #000; padding: 80px; border-radius: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;"
-            class="reveal">
+        <div class="contact-hub reveal">
             <div>
-                <h2 style="font-size: 3rem; line-height: 1;">Ready to<br>Transform?</h2>
-                <p style="margin-top: 20px; font-weight: 600;">Reach out to our engineering lead today.</p>
+                <h2>Let's Build Something Great</h2>
+                <p style="margin-top:20px;">Fill the brief and we'll reply within 24 hours.</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="text" placeholder="Your Name"
-                    style="padding: 15px; border: 1px solid #ddd; border-radius: 10px;">
-                <input type="email" placeholder="Work Email"
-                    style="padding: 15px; border: 1px solid #ddd; border-radius: 10px;">
-                <button
-                    style="padding: 15px; background: #000; color: #fff; border: none; border-radius: 10px; font-weight: 700; cursor: pointer;">Send
-                    Proposal</button>
+            <div>
+                <form>
+                    <input type="text" placeholder="Full Name">
+                    <input type="email" placeholder="Email">
+                    <select>
+                        <option>Web Development</option>
+                        <option>Software Architecture</option>
+                    </select>
+                    <textarea rows="4" placeholder="Project Details"></textarea>
+                    <button type="submit" class="btn-submit">Submit</button>
+                </form>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-main">
+        <div class="footer-grid">
             <div>
-                <div class="footer-logo">TECHYRA<span>.</span></div>
-                <p style="color: var(--text-dim); font-size: 14px;">Building the infrastructure of tomorrow, today.
-                    Leading the way in digital transformation.</p>
+                <div class="logo">TECHYRA<span>.</span></div>
+                <p style="color:var(--text-dim);margin-top:20px;">Premium engineering.</p>
             </div>
-            <div class="footer-links">
-                <h4>Company</h4>
-                <a href="#">About</a>
-                <a href="#">Careers</a>
-                <a href="#">Security</a>
+            <div>
+                <p>Services</p>
             </div>
-            <div class="footer-links">
-                <h4>Ecosystem</h4>
-                <a href="#">Titan ERP</a>
-                <a href="#">Lumina AI</a>
-                <a href="#">Guard Pro</a>
+            <div>
+                <p>Legal</p>
             </div>
-            <div class="footer-links">
-                <h4>Connect</h4>
-                <a href="#">LinkedIn</a>
-                <a href="#">Twitter / X</a>
-                <a href="#">GitHub</a>
+            <div>
+                <p>Clients</p>
             </div>
-        </div>
-        <div
-            style="text-align: center; border-top: 1px solid var(--border); padding-top: 30px; color: #444; font-size: 12px;">
-            &copy; 2024 TECHYRA SOLUTIONS. PRIVACY POLICY | TERMS OF SERVICE
         </div>
     </footer>
 
     <script>
-        // Scroll Logic
-        const nav = document.getElementById('navbar');
-        const progress = document.getElementById('progress');
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
 
-        window.onscroll = () => {
-            // Navbar
-            if (window.scrollY > 50) nav.classList.add('shrink');
-            else nav.classList.remove('shrink');
-
-            // Progress
-            let winScroll = document.documentElement.scrollTop;
+        window.addEventListener('scroll', () => {
+            let nav = document.getElementById('navbar');
+            nav.classList.toggle('shrink', window.scrollY > 50);
+            let progress = document.getElementById('progress');
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            progress.style.width = (winScroll / height) * 100 + "%";
+            progress.style.width = (window.scrollY / height) * 100 + "%";
 
-            // Reveal
             document.querySelectorAll('.reveal').forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) el.classList.add('active');
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
             });
-        };
+        });
 
-        // Initialize first reveal
-        window.onload = () => {
-            window.dispatchEvent(new Event('scroll'));
-        };
+        window.dispatchEvent(new Event('scroll'));
     </script>
+
 </body>
 
 </html>
