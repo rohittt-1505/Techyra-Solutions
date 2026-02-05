@@ -4,119 +4,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RonDev | Futuristic Developer</title>
+    <title>Techyra Solutions | Digital Future</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --dark: #050505;
+            --glass: rgba(255, 255, 255, .06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            background: var(--dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ===== Scroll Progress ===== */
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            z-index: 2000;
+        }
+
+        /* ===== Header ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, .6);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: .3s;
+        }
+
+        header.shrink {
+            padding: 12px 8%;
+            background: rgba(0, 0, 0, .9);
+        }
+
+        .logo {
+            font-family: Rajdhani;
+            font-size: 24px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .logo span {
+            color: var(--primary)
+        }
+
+        /* ===== Desktop Nav ===== */
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--primary)
+        }
+
+        /* ===== Hamburger ===== */
+        .menu-btn {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        /* ===== Mobile Nav ===== */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 260px;
+            height: 100vh;
+            background: #0c0c0c;
+            padding: 80px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            transition: .4s;
+            z-index: 1500;
+        }
+
+        .mobile-nav.active {
+            right: 0
+        }
+
+        .mobile-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at top right, #1a1a2e, var(--dark));
+        }
+
+        .hero h1 {
+            font-family: Rajdhani;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            max-width: 600px;
+            color: #aaa;
+            margin: 20px 0;
+        }
+
+        .btn-main {
+            padding: 14px 35px;
+            border-radius: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 242, 255, .5);
+        }
+
+        /* ===== Sections ===== */
+        section {
+            padding: 100px 8%
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, .08);
+            padding: 40px;
+            border-radius: 20px;
+            transition: .4s;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+        }
+
+        .card i {
+            font-size: 35px;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        /* ===== Stats ===== */
+        .stats {
+            background: #0c0c18;
+            text-align: center;
+        }
+
+        .counter {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-family: Rajdhani;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            padding: 60px 8%;
+            background: #000;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        /* ===== Responsive ===== */
+        @media(max-width:768px) {
+            nav {
+                display: none
+            }
+
+            .menu-btn {
+                display: block
+            }
+
+            section {
+                padding: 80px 6%
+            }
+
+            .hero {
+                padding-top: 100px
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <canvas id="particles"></canvas>
+    <div id="progress"></div>
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">RonDev</a>
+    <header>
+        <a href="#" class="logo">TECHYRA<span>.</span></a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#stats">Stats</a>
+            <a href="#contact">Contact</a>
+        </nav>
 
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#clients">Clients</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        <div class="menu-btn"><i class="fa fa-bars"></i></div>
+    </header>
 
-    <!-- HERO -->
+    <div class="mobile-nav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#stats">Stats</a>
+        <a href="#contact">Contact</a>
+    </div>
+
     <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Futuristic Web Experiences</h1>
-            <div class="typing" id="typing"></div>
-            <a href="#services" class="glow-btn">Explore Now</a>
-        </div>
+        <h1>Techyra Solutions</h1>
+        <p>We build next-generation software, AI-driven architectures and scalable cloud ecosystems.</p>
+        <a href="#services" class="btn-main">Explore Services</a>
     </section>
 
-    <!-- SERVICES -->
-    <section class="section" id="services">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card-futuristic from-left">
-                        <h4>Full Stack Development</h4>
-                        <p>High performance scalable web applications.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-futuristic from-bottom">
-                        <h4>UI/UX Animation</h4>
-                        <p>Futuristic interface with smooth animations.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-futuristic from-right">
-                        <h4>Automation & CRM</h4>
-                        <p>Custom dashboards & enterprise solutions.</p>
-                    </div>
-                </div>
+    <section id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="grid">
+            <div class="card">
+                <i class="fa fa-code"></i>
+                <h3>Web Development</h3>
+                <p>Modern full stack web applications with high performance.</p>
+            </div>
+            <div class="card">
+                <i class="fa fa-brain"></i>
+                <h3>AI Systems</h3>
+                <p>Data-driven automation & machine learning integrations.</p>
+            </div>
+            <div class="card">
+                <i class="fa fa-cloud"></i>
+                <h3>Cloud Infrastructure</h3>
+                <p>Secure & scalable cloud deployment architecture.</p>
             </div>
         </div>
     </section>
 
-    <!-- WORK -->
-    <section class="section" id="work">
-        <div class="container">
-            <h2 class="section-title">Our Work</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card-futuristic zoom">
-                        <h5>Parking System</h5>
-                        <p>Vehicle management automation platform.</p>
-                        <a href="#" class="glow-btn-sm">Live Preview</a>
-                    </div>
-                </div>
+    <section class="stats" id="stats">
+        <div class="grid">
+            <div>
+                <h2 class="counter" data-target="120">0</h2>
+                <p>Projects</p>
+            </div>
+            <div>
+                <h2 class="counter" data-target="80">0</h2>
+                <p>Clients</p>
+            </div>
+            <div>
+                <h2 class="counter" data-target="10">0</h2>
+                <p>Years</p>
             </div>
         </div>
     </section>
 
-    <!-- CLIENT COUNTER -->
-    <section class="section text-center" id="clients">
-        <h2 class="section-title">Trusted By</h2>
-        <div class="counter" data-target="120">0</div>
-        <p>Happy Clients</p>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Connect With Me</h2>
-            <form class="row g-3">
-                <div class="col-md-6"><input type="text" class="form-control custom-input" placeholder="Name"></div>
-                <div class="col-md-6"><input type="email" class="form-control custom-input" placeholder="Email"></div>
-                <div class="col-12"><textarea class="form-control custom-input" rows="4"
-                        placeholder="Message"></textarea></div>
-                <div class="col-12 text-center"><button class="glow-btn">Send Message</button></div>
-            </form>
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 RonDev | Futuristic Portfolio</p>
+    <footer id="contact">
+        <h3>Let’s Build The Future</h3>
+        <p style="color:#666;margin-top:10px">© 2024 Techyra Solutions</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script>
 
+        /* ===== Scroll Progress ===== */
+        window.addEventListener("scroll", () => {
+            let scrollTop = document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById("progress").style.width = (scrollTop / height) * 100 + "%";
+        });
+
+        /* ===== Navbar Shrink ===== */
+        window.addEventListener("scroll", () => {
+            document.querySelector("header").classList.toggle("shrink", window.scrollY > 50);
+        });
+
+        /* ===== Mobile Menu ===== */
+        const menuBtn = document.querySelector(".menu-btn");
+        const mobileNav = document.querySelector(".mobile-nav");
+
+        menuBtn.onclick = () => {
+            mobileNav.classList.toggle("active");
+        };
+
+        /* ===== Scroll Reveal ===== */
+        const cards = document.querySelectorAll(".card");
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
+            });
+        }, { threshold: .2 });
+
+        cards.forEach(card => observer.observe(card));
+
+        /* ===== Counter Animation ===== */
+        const counters = document.querySelectorAll(".counter");
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    let counter = entry.target;
+                    let target = +counter.dataset.target;
+                    let count = 0;
+                    let update = () => {
+                        count += target / 100;
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count);
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    update();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: .5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+    </script>
 </body>
 
 </html>
