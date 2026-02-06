@@ -111,29 +111,29 @@
         }
 
         /* Underline base */
+        .nav-links a {
+            position: relative;
+            padding-bottom: 6px;
+        }
+
         .nav-links a::after {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
-            bottom: -6px;
+            bottom: 0;
             width: 0%;
             height: 2px;
             background: var(--primary);
             transition: width 0.3s ease;
         }
 
-        /* Hover underline */
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Active underline */
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
+        .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
         }
 
         .hamburger {
@@ -454,28 +454,49 @@
             justify-content: space-between;
         }
 
+
+        .hero-btn {
+            display: inline-block;
+            padding: 18px 55px;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            transition: 0.4s ease;
+        }
+
+        .hero-btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 25px var(--primary);
+        }
+
         @media (max-width: 992px) {
+
             .nav-links {
                 position: fixed;
                 top: 0;
-                left: -100%;
-                width: 100%;
+                right: -100%;
+                width: 75%;
                 height: 100vh;
                 background: #000;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 3rem;
-                transition: left 0.5s ease;
-                z-index: 999;
+                gap: 2.5rem;
+                transition: right 0.4s ease;
+                z-index: 1001;
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
             }
 
             .nav-links.active {
-                left: 0;
+                right: 0;
             }
 
             .hamburger {
                 display: block;
+                z-index: 1002;
             }
 
             .contact-grid {
@@ -483,7 +504,7 @@
             }
 
             .section-header h2 {
-                font-size: 3.2rem;
+                font-size: 2.2rem;
             }
         }
     </style>
@@ -534,8 +555,7 @@
 
 
             <div class="reveal">
-                <a href="#contact"
-                    style="padding: 20px 50px; text-decoration: none; color: #fff; border: 1px solid var(--primary); border-radius: 50px; font-weight: 700; transition: 0.4s;">
+                <a href="#contact" class="hero-btn">
                     Start Your Project
                 </a>
             </div>
@@ -699,7 +719,7 @@
                             </p>
 
                             <p style="font-size:13px; color:var(--text-dim);">
-                                📍 Mumbai, Maharashtra<br>
+                                📍 Thane, Maharashtra<br>
                                 ⭐ Must Try: Cheese Masala Dosa
                             </p>
                         </div>
