@@ -551,6 +551,208 @@
                 transform: translateY(0);
             }
         }
+
+
+        /* WHY CHOOSE SECTION */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .why-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+        }
+
+        .why-card h3 {
+            font-family: 'Rajdhani';
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .why-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow:
+                0 0 20px rgba(0, 242, 255, 0.4),
+                0 0 40px rgba(0, 242, 255, 0.2);
+        }
+
+
+        /* STATS SECTION */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-box {
+            background: var(--card);
+            padding: 3rem 1.5rem;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            transition: 0.4s ease;
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            font-family: 'Rajdhani';
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-box p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow:
+                0 0 20px rgba(0, 242, 255, 0.5),
+                0 0 40px rgba(0, 242, 255, 0.2);
+        }
+
+        /* FAQ SECTION */
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .faq-question i {
+            transition: 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 25px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            transition: all 0.4s ease;
+        }
+
+        .faq-item.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 15px 25px 25px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(45deg);
+            color: var(--primary);
+        }
+
+        /* TEAM SECTION */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            text-align: center;
+            padding: 2rem;
+            transition: 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .team-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
+        }
+
+        .team-img {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(0, 242, 255, 0.4);
+        }
+
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-card h3 {
+            font-family: 'Rajdhani';
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .role {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .team-social a {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            margin: 0 8px;
+            transition: 0.3s ease;
+        }
+
+        .team-social a:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
     </style>
 </head>
 
@@ -696,6 +898,195 @@
             </div>
 
         </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-choose" style="background:rgba(0,0,0,0.4);">
+
+        <div class="section-header">
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                Why Choose Techyra
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
+        </div>
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Fast Execution</h3>
+                <p>We deliver high-quality solutions quickly without compromising performance.</p>
+            </div>
+
+            <div class="why-card">
+                <i class="fas fa-shield-halved"></i>
+                <h3>Secure & Scalable</h3>
+                <p>Built with modern architecture that grows with your business.</p>
+            </div>
+
+            <div class="why-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Business Focused</h3>
+                <p>Every project is designed to improve ROI and real business outcomes.</p>
+            </div>
+
+            <div class="why-card">
+                <i class="fas fa-headset"></i>
+                <h3>Ongoing Support</h3>
+                <p>Continuous monitoring and long-term maintenance support.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Stats Section -->
+    <section id="stats" style="background:rgba(0,0,0,0.6);">
+
+        <div class="section-header">
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                Our Impact in Numbers
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-box">
+                <h3 class="counter" data-target="25">0</h3>
+                <p>Projects Delivered</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 class="counter" data-target="15">0</h3>
+                <p>Happy Clients</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 class="counter" data-target="3">0</h3>
+                <p>Years Experience</p>
+            </div>
+
+            <div class="stat-box">
+                <h3 class="counter" data-target="100">0</h3>
+                <p>Commitment %</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" style="background:rgba(0,0,0,0.4);">
+
+        <div class="section-header">
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                Frequently Asked Questions
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
+        </div>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long does a project take?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    Most projects take between 2 to 6 weeks depending on complexity,
+                    features and integrations required.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you provide post-launch support?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes. We provide maintenance, updates and long-term technical support
+                    to ensure your software runs smoothly.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can you redesign existing software?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    Absolutely. We modernize outdated systems with better UI,
+                    improved performance and scalable architecture.
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section id="team">
+
+        <div class="section-header">
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                Meet Our Team
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
+        </div>
+
+        <div class="team-grid">
+
+            <!-- Member 1 -->
+            <div class="team-card">
+                <div class="team-img">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Founder">
+                </div>
+                <h3>Rohit Rathod</h3>
+                <p class="role">Founder & Lead Developer</p>
+                <div class="team-social">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="team-card">
+                <div class="team-img">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="UI Designer">
+                </div>
+                <h3>Priya Sharma</h3>
+                <p class="role">UI/UX Designer</p>
+                <div class="team-social">
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="team-card">
+                <div class="team-img">
+                    <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Backend Dev">
+                </div>
+                <h3>Aman Verma</h3>
+                <p class="role">Backend Engineer</p>
+                <div class="team-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+
+        </div>
+
     </section>
 
     <!-- Portfolio -->
@@ -1144,6 +1535,60 @@
                 if (link.getAttribute("href") === "#" + current) {
                     link.classList.add("active");
                 }
+            });
+        });
+
+
+        // Animated Counter
+        const counters = document.querySelectorAll(".counter");
+        let started = false;
+
+        function startCounters() {
+
+            if (started) return;
+
+            const section = document.getElementById("stats");
+            const sectionTop = section.getBoundingClientRect().top;
+
+            if (sectionTop < window.innerHeight - 100) {
+
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute("data-target");
+                    const increment = target / 100;
+
+                    const updateCounter = () => {
+                        const current = +counter.innerText;
+
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current + increment);
+                            setTimeout(updateCounter, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+
+                    updateCounter();
+                });
+
+                started = true;
+            }
+        }
+
+        window.addEventListener("scroll", startCounters);
+
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach(item => {
+            item.querySelector(".faq-question").addEventListener("click", () => {
+
+                faqItems.forEach(i => {
+                    if (i !== item) i.classList.remove("active");
+                });
+
+                item.classList.toggle("active");
+
             });
         });
 
