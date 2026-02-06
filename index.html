@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" 
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>• Techyra Solutions</title>
     <meta name="description"
         content="We build high-performance websites, web apps, mobile apps and enterprise software for ambitious businesses." />
@@ -483,17 +484,14 @@
                 top: 0;
                 right: -100%;
                 width: 100%;
-                /* 🔥 full width */
                 height: 100vh;
-                /* 🔥 full height */
-                background: #000;
+                background: radial-gradient(circle at top, #050505 0%, #000 100%);
                 flex-direction: column;
                 justify-content: flex-start;
-                /* 🔥 center se upar */
                 align-items: center;
-                padding-top: 120px;
-                /* 🔥 thoda upar spacing */
-                gap: 25px;
+                padding-top: 90px;
+                /* 🔥 aur upar */
+                gap: 22px;
                 transition: right 0.4s ease;
                 z-index: 1001;
             }
@@ -502,22 +500,30 @@
                 right: 0;
             }
 
+            /* 🔥 PREMIUM BUTTON STYLE */
             .nav-links a {
-                width: 80%;
+                width: 85%;
                 text-align: center;
-                padding: 18px 0;
-                border-radius: 12px;
-                border: 1px solid rgba(0, 242, 255, 0.2);
-                background: rgba(0, 242, 255, 0.05);
+                padding: 16px 0;
+                border-radius: 14px;
                 font-size: 1.1rem;
+                font-weight: 600;
                 letter-spacing: 1px;
-                transition: 0.3s ease;
+                text-transform: uppercase;
+
+                background: rgba(0, 242, 255, 0.05);
+                border: 1px solid rgba(0, 242, 255, 0.25);
+
+                backdrop-filter: blur(10px);
+                transition: all 0.3s ease;
             }
 
             .nav-links a:hover {
                 background: rgba(0, 242, 255, 0.15);
-                box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
-                transform: scale(1.05);
+                box-shadow:
+                    0 0 15px rgba(0, 242, 255, 0.6),
+                    0 0 30px rgba(0, 242, 255, 0.4);
+                transform: translateY(-4px) scale(1.03);
             }
 
             .hamburger {
