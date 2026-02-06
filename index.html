@@ -449,16 +449,29 @@
     </header>
 
     <!-- Hero -->
-    <section id="home">
+    <section class="hero" id="home">
+        <div id="particles-js"></div>
         <canvas id="hero-canvas"></canvas>
         <div class="hero-content">
-            <div class="tag">PREMIUM SOFTWARE STUDIO</div>
-            <h1>We Build The<br><span>Digital Future</span></h1>
-            <p>Custom high-performance websites, SaaS platforms, mobile apps and enterprise software solutions — built
-                for scale, speed and real business impact.</p>
-            <div style="display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;">
-                <a href="#contact" class="btn btn-primary">Start Your Project</a>
-                <a href="#portfolio" class="btn btn-outline">See Our Work</a>
+            <h5 class="reveal" style="letter-spacing: 6px; color: var(--primary); margin-bottom: 20px;">
+                TECHYRA SOLUTIONS
+            </h5>
+
+            <h1 class="reveal">
+                We Create <span>Impactful Software</span>
+            </h1>
+
+            <p class="reveal" style="max-width:700px; margin:0 auto 40px; color:#999;">
+                Custom web platforms, automation systems and scalable applications
+                built for modern businesses.
+            </p>
+
+
+            <div class="reveal">
+                <a href="#contact"
+                    style="padding: 20px 50px; text-decoration: none; color: #fff; border: 1px solid var(--primary); border-radius: 50px; font-weight: 700; transition: 0.4s;">
+                    Start Your Project
+                </a>
             </div>
         </div>
     </section>
@@ -466,148 +479,308 @@
     <!-- About -->
     <section id="about">
         <div class="section-header">
-            <h2>About Us</h2>
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                About Techyra Solutions
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
         </div>
+
         <div class="grid">
             <div class="card">
-                <h3>01. Vision</h3>
-                <p>We create digital products that don't just look good — they drive measurable business growth.</p>
+                <h3>01. Who We Are</h3>
+                <p>
+                    Techyra is a modern software studio focused on building reliable,
+                    scalable and high-performance digital solutions for growing businesses.
+                </p>
             </div>
+
             <div class="card">
-                <h3>02. Craft</h3>
-                <p>Obsessed with clean architecture, performance, scalability and modern user experience.</p>
+                <h3>02. What We Do</h3>
+                <p>
+                    We design and develop websites, SaaS platforms, automation systems
+                    and enterprise applications tailored to real business needs.
+                </p>
             </div>
+
             <div class="card">
-                <h3>03. Delivery</h3>
-                <p>Transparent process, fixed timelines, production-grade quality — every time.</p>
+                <h3>03. How We Work</h3>
+                <p>
+                    Clear communication, structured development process and
+                    on-time delivery — ensuring quality without compromise.
+                </p>
             </div>
         </div>
     </section>
 
+
     <!-- Services -->
     <section id="services" style="background:rgba(0,0,0,0.3);">
         <div class="section-header">
-            <h2>Our Expertise</h2>
+            <!-- <h2>Our Services</h2> -->
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                Our Services
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
         </div>
+
         <div class="grid">
+
             <div class="card">
-                <div class="service-icon"><i class="fas fa-globe"></i></div>
-                <h3>Custom Websites</h3>
-                <p>High-converting, blazing-fast websites built with modern stack.</p>
+                <div class="service-icon"><i class="fas fa-code"></i></div>
+                <h3>Web Development</h3>
+                <p>Scalable, high-performance websites and web applications built with modern technologies.</p>
             </div>
+
             <div class="card">
-                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
-                <h3>Mobile Applications</h3>
-                <p>Native & cross-platform apps (React Native / Flutter).</p>
+                <div class="service-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>SaaS & Business Software</h3>
+                <p>Custom dashboards, CRM systems, admin panels and automation tools tailored to your workflow.</p>
             </div>
+
             <div class="card">
-                <div class="service-icon"><i class="fas fa-server"></i></div>
-                <h3>Web & SaaS Apps</h3>
-                <p>Complex dashboards, CRMs, admin panels, internal tools.</p>
+                <div class="service-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                <h3>Mobile App Development</h3>
+                <p>Cross-platform and native mobile apps designed for performance and seamless user experience.</p>
             </div>
+
             <div class="card">
                 <div class="service-icon"><i class="fas fa-cloud"></i></div>
-                <h3>Cloud & DevOps</h3>
-                <p>AWS, Azure, GCP, Docker, CI/CD pipelines.</p>
+                <h3>Cloud & Deployment</h3>
+                <p>Secure hosting, cloud infrastructure setup and CI/CD pipelines for reliable operations.</p>
             </div>
+
             <div class="card">
-                <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
-                <h3>UI/UX Design</h3>
-                <p>Modern, intuitive, conversion-focused interfaces.</p>
+                <div class="service-icon"><i class="fas fa-gears"></i></div>
+                <h3>Automation Solutions</h3>
+                <p>Process automation and system integration to improve efficiency and reduce manual work.</p>
             </div>
+
             <div class="card">
-                <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
-                <h3>Maintenance & Scale</h3>
-                <p>Ongoing support, performance tuning, security updates.</p>
+                <div class="service-icon"><i class="fas fa-shield"></i></div>
+                <h3>Support & Maintenance</h3>
+                <p>Continuous monitoring, updates and performance optimization for long-term stability.</p>
             </div>
+
         </div>
     </section>
 
     <!-- Portfolio -->
     <section id="portfolio">
         <div class="section-header">
-            <h2>Featured Projects</h2>
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                Featured Projects
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
         </div>
+
         <div class="portfolio-grid">
+
+            <!-- Project 1 -->
             <div class="portfolio-card"
-                style="background:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80') center/cover;">
-                <h4>SaaS Analytics Platform</h4>
+                style="background:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80') center/cover; position:relative;">
+
+                <div style="
+                position:absolute;
+                bottom:25px;
+                left:25px;
+                right:25px;
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                z-index:2;
+            ">
+                    <h4 style="margin:0;">SaaS Analytics Platform</h4>
+
+                    <a href="https://your-live-link-1.com" target="_blank"
+                        style="color:#00f2ff; font-size:20px; text-decoration:none;">
+                        <i class="fas fa-desktop"></i>
+                    </a>
+                </div>
             </div>
+
+            <!-- Project 2 -->
             <div class="portfolio-card"
-                style="background:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80') center/cover;">
-                <h4>E-Commerce Engine</h4>
+                style="background:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80') center/cover; position:relative;">
+
+                <div style="
+                position:absolute;
+                bottom:25px;
+                left:25px;
+                right:25px;
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                z-index:2;
+            ">
+                    <h4 style="margin:0;">E-Commerce Engine</h4>
+
+                    <a href="https://your-live-link-2.com" target="_blank"
+                        style="color:#00f2ff; font-size:20px; text-decoration:none;">
+                        <i class="fas fa-desktop"></i>
+                    </a>
+                </div>
             </div>
+
+            <!-- Project 3 -->
             <div class="portfolio-card"
-                style="background:url('https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80') center/cover;">
-                <h4>Enterprise Dashboard</h4>
+                style="background:url('https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80') center/cover; position:relative;">
+
+                <div style="
+                position:absolute;
+                bottom:25px;
+                left:25px;
+                right:25px;
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                z-index:2;
+            ">
+                    <h4 style="margin:0;">Enterprise Dashboard</h4>
+
+                    <a href="https://your-live-link-3.com" target="_blank"
+                        style="color:#00f2ff; font-size:20px; text-decoration:none;">
+                        <i class="fas fa-desktop"></i>
+                    </a>
+                </div>
             </div>
+
         </div>
     </section>
+
 
     <!-- Testimonials -->
     <section id="testimonials" style="background:rgba(0,0,0,0.3);">
         <div class="section-header">
-            <h2>What Clients Say</h2>
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                Client Feedback
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
         </div>
+
         <div class="grid">
-            <div class="testimonial">
-                <p>“They delivered our platform faster than promised and the quality is insane. Best development partner
-                    we’ve ever had.”</p>
-                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">— Sarah Chen,
-                    CEO</p>
+
+            <div class="testimonial" style="position:relative;">
+                <div style="color:var(--primary); font-size:22px; margin-bottom:15px;">
+                    ★★★★★
+                </div>
+                <p>
+                    Techyra helped us streamline our internal operations with a custom dashboard.
+                    The system is fast, stable and exactly what our team needed.
+                </p>
+                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">
+                    — Operations Manager, Logistics Firm
+                </p>
             </div>
+
             <div class="testimonial">
-                <p>“Completely transformed our outdated system. Conversions up over 300% in just 4 months.”</p>
-                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">— Michael R.,
-                    Founder</p>
+                <div style="color:var(--primary); font-size:22px; margin-bottom:15px;">
+                    ★★★★★
+                </div>
+                <p>
+                    From planning to deployment, the process was smooth and transparent.
+                    The final product exceeded our expectations.
+                </p>
+                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">
+                    — Founder, E-Commerce Startup
+                </p>
             </div>
+
             <div class="testimonial">
-                <p>“Professional, fast, great communication. Will definitely work with them again.”</p>
-                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">— Priya Patel,
-                    CTO</p>
+                <div style="color:var(--primary); font-size:22px; margin-bottom:15px;">
+                    ★★★★★
+                </div>
+                <p>
+                    Reliable, responsive and technically strong. Techyra delivered
+                    a scalable solution that supports our long-term growth.
+                </p>
+                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">
+                    — CTO, SaaS Company
+                </p>
             </div>
+
         </div>
     </section>
+
 
     <!-- Contact -->
     <section id="contact">
         <div class="section-header">
-            <h2>Start Your Project</h2>
+            <h2 style="position:relative; display:inline-block; font-family:'Rajdhani'; letter-spacing:2px;">
+                Start Your Project
+            </h2>
+            <div
+                style="width:300px; height:4px; background:linear-gradient(90deg,#00f2ff,#7000ff); margin:12px auto 0; border-radius:2px;">
+            </div>
         </div>
+
         <div class="contact-grid">
-            <form action="https://formspree.io/f/your-id" method="POST">
-                <input type="text" name="name" placeholder="Your Name" required />
-                <input type="email" name="email" placeholder="Business Email" required />
-                <input type="text" name="company" placeholder="Company (optional)" />
-                <textarea name="message" placeholder="Tell us about your idea or project..." required></textarea>
-                <button type="submit" class="btn btn-primary"
-                    style="width:100%; padding:1.2rem; font-size:1.1rem; cursor:pointer;">
-                    Send Message
+
+            <!-- Contact Form -->
+            <form action="https://formspree.io/f/your-id" method="POST"
+                style="background:rgba(255,255,255,0.03); padding:2.5rem; border-radius:16px; border:1px solid rgba(255,255,255,0.08);">
+
+                <input type="text" name="name" placeholder="Full Name" required
+                    style="width:100%; padding:1rem; margin-bottom:1.2rem; background:#0d0d0d; border:1px solid rgba(255,255,255,0.08); color:#fff; border-radius:8px;" />
+
+                <input type="email" name="email" placeholder="Business Email" required
+                    style="width:100%; padding:1rem; margin-bottom:1.2rem; background:#0d0d0d; border:1px solid rgba(255,255,255,0.08); color:#fff; border-radius:8px;" />
+
+                <input type="text" name="company" placeholder="Company Name (Optional)"
+                    style="width:100%; padding:1rem; margin-bottom:1.2rem; background:#0d0d0d; border:1px solid rgba(255,255,255,0.08); color:#fff; border-radius:8px;" />
+
+                <textarea name="message" placeholder="Tell us about your project..." required
+                    style="width:100%; padding:1rem; margin-bottom:1.5rem; background:#0d0d0d; border:1px solid rgba(255,255,255,0.08); color:#fff; border-radius:8px; min-height:140px;"></textarea>
+
+                <button type="submit"
+                    style="width:100%; padding:1.1rem; background:linear-gradient(90deg,#00f2ff,#7000ff); border:none; border-radius:8px; font-weight:700; cursor:pointer;">
+                    Send Inquiry
                 </button>
             </form>
 
+
+            <!-- Contact Info -->
             <div style="padding:1rem 0;">
-                <h3 style="font-family:'Rajdhani'; font-size:2.2rem; margin-bottom:1.8rem;">Get in Touch</h3>
-                <p style="margin-bottom:1.2rem; color:var(--text-dim);">
-                    <i class="fa fa-envelope" style="color:var(--primary); margin-right:12px;"></i>
-                    hello@nexusdev.studio
+
+                <h3 style="font-family:'Rajdhani'; font-size:2rem; margin-bottom:1.5rem;">
+                    Contact Information
+                </h3>
+
+                <p style="margin-bottom:1rem; color:var(--text-dim);">
+                    <i class="fa fa-envelope" style="color:#00f2ff; margin-right:12px;"></i>
+                    hello@techyra.com
                 </p>
-                <p style="margin-bottom:2.5rem; color:var(--text-dim);">
-                    <i class="fa fa-location-dot" style="color:var(--primary); margin-right:12px;"></i>
-                    Remote — Worldwide
+
+                <!-- <p style="margin-bottom:1rem; color:var(--text-dim);">
+                    <i class="fa fa-phone" style="color:#00f2ff; margin-right:12px;"></i>
+                    +91 XXXXX XXXXX
+                </p> -->
+
+                <p style="margin-bottom:2rem; color:var(--text-dim);">
+                    <i class="fa fa-location-dot" style="color:#00f2ff; margin-right:12px;"></i>
+                    Mumbai, India — Serving Clients Worldwide
                 </p>
-                <div style="font-size:2rem; display:flex; gap:1.5rem;">
-                    <i class="fab fa-linkedin"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-github"></i>
+
+                <div style="font-size:1.6rem; display:flex; gap:1.2rem;">
+                    <a href="#" style="color:#fff;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color:#fff;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color:#fff;"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
+
     <!-- Footer -->
-    <footer>
-        <p>© 2025 NEXUSDEV STUDIO — Built for companies that want to win.</p>
+    <footer style="padding:3rem 5%; text-align:center; border-top:1px solid rgba(255,255,255,0.08); color:#64748b;">
+        <p>© 2025 Techyra Solutions — Powering Modern Businesses.</p>
     </footer>
 
     <!-- Back to Top -->
