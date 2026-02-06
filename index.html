@@ -421,6 +421,13 @@
             overflow: hidden;
         }
 
+        .flip-front,
+        .flip-back {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+        }
+
         /* FRONT */
         .flip-front {
             border: 1px solid var(--border);
@@ -441,6 +448,9 @@
             box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
         }
 
+        .flip-back {
+            transform: rotateY(180deg) translateZ(1px);
+        }
 
         /* BACK */
         .flip-back {
@@ -797,7 +807,6 @@
             <a href="#contact">Contact</a>
         </nav>
 
-
         <div class="hamburger" id="hamburger">
             <i class="fas fa-bars" id="menuIcon"></i>
         </div>
@@ -1137,7 +1146,7 @@
         <div class="portfolio-grid">
 
             <!-- Project 1 -->
-            <div class="flip-wrapper" onclick="this.classList.toggle('active')">
+            <div class="flip-wrapper" onclick="handleFlip(event, this)">
                 <div class="flip-card">
 
                     <!-- FRONT -->
@@ -1169,7 +1178,10 @@
         align-items:center;
         z-index:2;">
                             <h4 style="margin:0;">99 Variety Dosa</h4>
-                            <i class="fas fa-desktop" style="color:var(--primary);"></i>
+                            <a href="https://varietydosa.netlify.app/" target="_blank"
+                                style="color:var(--primary); z-index:3;">
+                                <i class="fas fa-desktop"></i>
+                            </a>
                         </div>
 
                     </div>
@@ -1208,7 +1220,7 @@
             </div>
 
             <!-- Project 2 -->
-            <div class="flip-wrapper" onclick="this.classList.toggle('active')">
+            <div class="flip-wrapper" onclick="handleFlip(event, this)">
                 <div class="flip-card">
 
                     <div class="flip-front"
@@ -1216,7 +1228,10 @@
                         <div style="position:absolute; bottom:20px; left:20px; right:20px;
                                 display:flex; justify-content:space-between; align-items:center;z-index:2;">
                             <h4 style="margin:0;">E-Commerce Platform</h4>
-                            <i class="fas fa-desktop" style="color:var(--primary);"></i>
+                            <a href="https://varietydosa.netlify.app/" target="_blank"
+                                style="color:var(--primary); z-index:3;">
+                                <i class="fas fa-desktop"></i>
+                            </a>
                         </div>
                     </div>
 
@@ -1252,7 +1267,7 @@
             </div>
 
             <!-- Project 3 -->
-            <div class="flip-wrapper" onclick="this.classList.toggle('active')">
+            <div class="flip-wrapper" onclick="handleFlip(event, this)">
                 <div class="flip-card">
 
                     <div class="flip-front"
@@ -1260,7 +1275,10 @@
                         <div style="position:absolute; bottom:20px; left:20px; right:20px;
                                 display:flex; justify-content:space-between; align-items:center;z-index:2;">
                             <h4 style="margin:0;">Enterprise Dashboard</h4>
-                            <i class="fas fa-desktop" style="color:var(--primary);"></i>
+                            <a href="https://varietydosa.netlify.app/" target="_blank"
+                                style="color:var(--primary); z-index:3;">
+                                <i class="fas fa-desktop"></i>
+                            </a>
                         </div>
                     </div>
 
@@ -1627,6 +1645,15 @@
 
             });
         });
+
+
+        function handleFlip(e, element) {
+
+            // Agar click button ya link pe hua hai → flip mat karo
+            if (e.target.closest("a")) return;
+
+            element.classList.toggle("active");
+        }
 
     </script>
 </body>
