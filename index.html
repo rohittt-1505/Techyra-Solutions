@@ -4,22 +4,32 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NexusDev • Custom Software & Websites</title>
-
+    <title>NexusDev • Custom Software & Digital Solutions</title>
+    <meta name="description"
+        content="We build high-performance websites, web apps, mobile apps and enterprise software for ambitious businesses." />
     <link
-        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
+    <!-- AOS Library for scroll animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style>
         :root {
             --primary: #00f2ff;
-            --secondary: #7000ff;
+            --secondary: #c300ff;
             --bg: #050505;
-            --card: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-            --text: #ffffff;
+            --card: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #f1f5f9;
             --text-dim: #94a3b8;
+        }
+
+        body.light-mode {
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --text-dim: #475569;
+            --card: rgba(0, 0, 0, 0.04);
+            --border: rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -33,10 +43,45 @@
         }
 
         body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background: var(--bg);
             color: var(--text);
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: all 0.15s ease;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: all 0.25s ease;
+            z-index: 9999;
+            opacity: 0.7;
+        }
+
+        a:hover~.cursor,
+        button:hover~.cursor {
+            transform: translate(-50%, -50%) scale(2.2);
+            background: rgba(0, 242, 255, 0.15);
         }
 
         /* Progress Bar */
@@ -45,39 +90,45 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.05);
+            height: 3px;
+            background: rgba(255, 255, 255, 0.04);
             z-index: 9999;
         }
 
         #progress-bar {
             height: 100%;
-            width: 0%;
+            width: 0;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             box-shadow: 0 0 15px var(--primary);
-            transition: width 0.1s ease-out;
+            transition: width 0.08s linear;
         }
 
-        /* Header / Navbar */
+        /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            height: 80px;
+            padding: 1.2rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 5%;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(15px);
+            background: rgba(5, 5, 5, 0.92);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        header.scrolled {
+            padding: 0.9rem 5%;
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.08);
         }
 
         .logo {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 32px;
+            font-size: 2.1rem;
             font-weight: 700;
+            color: white;
             text-decoration: none;
         }
 
@@ -87,16 +138,17 @@
 
         .nav-links {
             display: flex;
-            gap: 6px;
+            gap: 2.2rem;
+            align-items: center;
         }
 
         .nav-links a {
             color: var(--text-dim);
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
             text-decoration: none;
-            padding: 10px 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
             transition: 0.3s;
         }
 
@@ -105,9 +157,22 @@
             color: var(--primary);
         }
 
+        #theme-toggle {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.2);
+        }
+
         .hamburger {
             display: none;
-            font-size: 24px;
+            font-size: 1.6rem;
             color: white;
             cursor: pointer;
         }
@@ -115,11 +180,12 @@
         /* Hero */
         #home {
             min-height: 100vh;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
+            padding: 0 5%;
             overflow: hidden;
             background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
         }
@@ -133,17 +199,23 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            padding: 0 20px;
             max-width: 1100px;
+        }
+
+        .hero-content .tag {
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .hero-content h1 {
             font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(3.2rem, 9vw, 7rem);
+            font-size: clamp(3.2rem, 9vw, 7.2rem);
             line-height: 1;
-            font-weight: 800;
-            margin-bottom: 24px;
-            text-transform: uppercase;
+            margin-bottom: 1.5rem;
         }
 
         .hero-content h1 span {
@@ -155,29 +227,29 @@
             color: var(--text-dim);
             font-size: 1.25rem;
             max-width: 720px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
+            margin: 0 auto 2.5rem;
         }
 
         .btn {
-            padding: 16px 44px;
+            display: inline-block;
+            padding: 1rem 2.4rem;
             border-radius: 10px;
             font-weight: 700;
+            text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 1px;
-            text-decoration: none;
-            display: inline-block;
             transition: all 0.35s;
         }
 
-        .btn-main {
+        .btn-primary {
             background: var(--primary);
             color: #000;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
         }
 
-        .btn-main:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 242, 255, 0.4);
+        .btn-primary:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.5);
         }
 
         .btn-outline {
@@ -188,23 +260,24 @@
         .btn-outline:hover {
             background: var(--primary);
             color: #000;
+            transform: translateY(-4px);
         }
 
         /* Sections */
         section {
-            padding: 140px 5%;
+            padding: 140px 5% 120px;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 5rem;
         }
 
         .section-header h2 {
             font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(2.8rem, 7vw, 5rem);
+            font-size: 4.2rem;
             text-transform: uppercase;
             letter-spacing: 3px;
         }
@@ -212,95 +285,216 @@
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 28px;
+            gap: 2rem;
         }
 
         .card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
+            border-radius: 16px;
+            padding: 2.2rem;
             transition: all 0.4s ease;
+            backdrop-filter: blur(6px);
         }
 
         .card:hover {
+            transform: translateY(-14px) scale(1.03);
             border-color: var(--primary);
-            transform: translateY(-12px);
-            background: rgba(255, 255, 255, 0.06);
-            box-shadow: 0 20px 60px rgba(0, 242, 255, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.18);
         }
 
         .card h3 {
             color: var(--primary);
-            font-family: 'Rajdhani', sans-serif;
+            font-family: 'Rajdhani';
             font-size: 1.9rem;
-            margin-bottom: 16px;
+            margin-bottom: 1rem;
         }
 
-        .card p {
-            color: var(--text-dim);
-            line-height: 1.6;
+        .service-icon {
+            font-size: 3.2rem;
+            color: var(--primary);
+            margin-bottom: 1.4rem;
+            transition: transform 0.4s;
+        }
+
+        .card:hover .service-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-card {
+            height: 340px;
+            background: #111 center/cover;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.8rem;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent 50%);
+            opacity: 0.8;
+            transition: opacity 0.4s;
+        }
+
+        .portfolio-card .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 242, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+            backdrop-filter: blur(5px);
+        }
+
+        .portfolio-card:hover .overlay {
+            opacity: 1;
+        }
+
+        .portfolio-card .overlay a {
+            background: var(--primary);
+            color: #000;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.4s;
+        }
+
+        .portfolio-card:hover .overlay a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .portfolio-card h4 {
+            position: relative;
+            z-index: 1;
+            font-size: 1.8rem;
+            font-family: 'Rajdhani';
+        }
+
+        /* Stats */
+        #stats {
+            background: rgba(0, 242, 255, 0.03);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Rajdhani';
+            font-size: 4.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
 
         /* Testimonials */
         .testimonial {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
+            border-radius: 16px;
+            padding: 2.5rem;
+            font-style: italic;
+            color: #e2e8f0;
+            transition: transform 0.4s;
         }
 
-        .testimonial p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 24px;
+        .testimonial:hover {
+            transform: translateY(-10px);
         }
 
         /* Contact */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.9fr;
-            gap: 80px;
-            max-width: 1200px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        input,
-        textarea {
+        form input,
+        form textarea {
             width: 100%;
-            padding: 18px 20px;
-            margin-bottom: 24px;
-            background: #0a0a0a;
+            padding: 1.1rem 1.4rem;
+            margin-bottom: 1.4rem;
+            background: #0d0d0d;
             border: 1px solid var(--border);
             color: white;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 1rem;
+            transition: border 0.3s;
         }
 
-        textarea {
+        form input:focus,
+        form textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        form textarea {
             min-height: 160px;
             resize: vertical;
+        }
+
+        #form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            display: none;
+        }
+
+        #form-message.success {
+            background: rgba(0, 242, 255, 0.15);
+            color: var(--primary);
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 5% 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: #64748b;
+            font-size: 0.95rem;
         }
 
         /* Back to top */
         #backToTop {
             position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 56px;
-            height: 56px;
+            bottom: 30px;
+            right: 30px;
+            width: 54px;
+            height: 54px;
             background: var(--primary);
             color: #000;
             border: none;
-            border-radius: 14px;
+            border-radius: 12px;
             font-size: 1.4rem;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s;
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
-            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(0, 242, 255, 0.3);
+            z-index: 999;
         }
 
         #backToTop.show {
@@ -308,20 +502,10 @@
             visibility: visible;
         }
 
-        #backToTop:hover {
-            background: white;
-            transform: translateY(-6px);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            header {
-                padding: 0 5%;
-            }
-
+        @media (max-width: 992px) {
             .nav-links {
                 position: fixed;
-                top: 80px;
+                top: 0;
                 left: -100%;
                 width: 100%;
                 height: 100vh;
@@ -329,7 +513,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                gap: 40px;
+                gap: 3rem;
                 transition: left 0.5s ease;
                 z-index: 999;
             }
@@ -345,21 +529,18 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        @media (max-width: 600px) {
-            section {
-                padding: 100px 5%;
-            }
 
             .section-header h2 {
-                font-size: 3rem;
+                font-size: 3.2rem;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Cursor Elements -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="follower"></div>
 
     <!-- Progress Bar -->
     <div id="progress-container">
@@ -367,201 +548,245 @@
     </div>
 
     <!-- Header -->
-    <header>
+    <header id="header">
         <a href="#" class="logo">NEXUS<span>DEV</span></a>
-
-        <div class="nav-links" id="nav">
+        <nav class="nav-links" id="nav">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
+            <a href="#portfolio">Projects</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
-        </div>
-
+            <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+        </nav>
         <div class="hamburger" id="hamburger">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fas fa-bars"></i>
         </div>
     </header>
 
     <!-- Hero -->
-    <section id="home">
+    <section id="home" data-aos="fade">
         <canvas id="hero-canvas"></canvas>
-
-        <div class="hero-content">
-            <p
-                style="color: var(--primary); font-weight: 700; letter-spacing: 4px; margin-bottom: 16px; text-transform: uppercase;">
-                Premium Software Development Studio
-            </p>
-            <h1>We Build <span>Powerful</span><br>Digital Products</h1>
-            <p>
-                Custom websites, SaaS platforms, mobile apps, enterprise software — delivered fast, scalable, and
-                future-proof.
-            </p>
-
-            <div style="margin-top: 40px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;">
-                <a href="#contact" class="btn btn-main">Get Started</a>
-                <a href="#portfolio" class="btn btn-outline">View Projects</a>
+        <div class="hero-content" data-aos="zoom-in" data-aos-delay="300">
+            <div class="tag">PREMIUM SOFTWARE STUDIO</div>
+            <h1>We Build The<br><span>Digital Future</span></h1>
+            <p>Custom high-performance websites, SaaS platforms, mobile apps and enterprise software solutions — built
+                for scale, speed and real business impact.</p>
+            <div style="display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;">
+                <a href="#contact" class="btn btn-primary">Start Your Project</a>
+                <a href="#portfolio" class="btn btn-outline">See Our Work</a>
             </div>
         </div>
     </section>
 
     <!-- About -->
     <section id="about">
-        <div class="section-header">
+        <div class="section-header" data-aos="fade-up">
             <h2>About Us</h2>
         </div>
         <div class="grid">
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <h3>01. Vision</h3>
+                <p>We create digital products that don't just look good — they drive measurable business growth.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+                <h3>02. Craft</h3>
+                <p>Obsessed with clean architecture, performance, scalability and modern user experience.</p>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+                <h3>03. Delivery</h3>
+                <p>Transparent process, fixed timelines, production-grade quality — every time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats / Trust -->
+    <section id="stats" data-aos="fade-in">
+        <div class="grid">
             <div class="card">
-                <h3>01. Mission</h3>
-                <p>We turn ambitious business ideas into high-performance digital products that scale and compete.</p>
+                <div class="stat-number"><span data-count="120">0</span>+</div>
+                <p>Projects Delivered</p>
             </div>
             <div class="card">
-                <h3>02. Experience</h3>
-                <p>Years of delivering enterprise-grade applications for startups and established companies worldwide.
-                </p>
+                <div class="stat-number"><span data-count="99">0</span>%</div>
+                <p>On-time Delivery</p>
             </div>
             <div class="card">
-                <h3>03. Approach</h3>
-                <p>Clean architecture, modern stack, fast delivery, and long-term maintainable code.</p>
+                <div class="stat-number"><span data-count="450">0</span>%</div>
+                <p>Avg. Performance Boost</p>
             </div>
         </div>
     </section>
 
     <!-- Services -->
-    <section id="services">
-        <div class="section-header">
-            <h2>Our Services</h2>
+    <section id="services" style="background:rgba(0,0,0,0.3);" data-aos="fade-up">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our Expertise</h2>
         </div>
         <div class="grid">
-            <div class="card">
+            <div class="card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="service-icon"><i class="fas fa-globe"></i></div>
                 <h3>Custom Websites</h3>
-                <p>High-performance, SEO-ready websites built with modern frameworks and stunning UI/UX.</p>
+                <p>High-converting, blazing-fast websites built with modern stack.</p>
             </div>
-            <div class="card">
-                <h3>Web Applications</h3>
-                <p>SaaS platforms, dashboards, internal tools — scalable and secure by design.</p>
+            <div class="card" data-aos="zoom-in" data-aos-delay="150">
+                <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Mobile Applications</h3>
+                <p>Native & cross-platform apps (React Native / Flutter).</p>
             </div>
-            <div class="card">
-                <h3>Mobile Apps</h3>
-                <p>Cross-platform mobile applications using Flutter / React Native.</p>
+            <div class="card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="service-icon"><i class="fas fa-server"></i></div>
+                <h3>Web & SaaS Apps</h3>
+                <p>Complex dashboards, CRMs, admin panels, internal tools.</p>
             </div>
-            <div class="card">
+            <div class="card" data-aos="zoom-in" data-aos-delay="250">
+                <div class="service-icon"><i class="fas fa-cloud"></i></div>
                 <h3>Cloud & DevOps</h3>
-                <p>AWS, Azure, Docker, CI/CD pipelines, infrastructure as code.</p>
+                <p>AWS, Azure, GCP, Docker, CI/CD pipelines.</p>
             </div>
-            <div class="card">
+            <div class="card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
                 <h3>UI/UX Design</h3>
-                <p>User-centered, modern, conversion-focused interface design.</p>
+                <p>Modern, intuitive, conversion-focused interfaces.</p>
             </div>
-            <div class="card">
-                <h3>Maintenance</h3>
-                <p>Long-term support, updates, performance monitoring & security.</p>
+            <div class="card" data-aos="zoom-in" data-aos-delay="350">
+                <div class="service-icon"><i class="fas fa-shield-halved"></i></div>
+                <h3>Maintenance & Scale</h3>
+                <p>Ongoing support, performance tuning, security updates.</p>
             </div>
         </div>
     </section>
 
     <!-- Portfolio -->
-    <section id="portfolio" style="background: rgba(0,0,0,0.3);">
-        <div class="section-header">
-            <h2>Recent Projects</h2>
+    <section id="portfolio">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Featured Projects</h2>
         </div>
-        <div class="grid">
-            <div class="card">
-                <h3>FinTech Dashboard</h3>
-                <p>Real-time analytics platform with secure authentication and complex data visualization.</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-card"
+                style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80');"
+                data-aos="fade-up" data-aos-delay="100">
+                <div class="overlay"><a href="#">View Project →</a></div>
+                <h4>SaaS Analytics Platform</h4>
             </div>
-            <div class="card">
-                <h3>E-Commerce Engine</h3>
-                <p>Headless commerce solution with Stripe, inventory, and multi-vendor support.</p>
+            <div class="portfolio-card"
+                style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80');"
+                data-aos="fade-up" data-aos-delay="200">
+                <div class="overlay"><a href="#">View Project →</a></div>
+                <h4>E-Commerce Engine</h4>
             </div>
-            <div class="card">
-                <h3>SaaS CRM</h3>
-                <p>Customer relationship management tool with automation workflows and integrations.</p>
+            <div class="portfolio-card"
+                style="background-image:url('https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80');"
+                data-aos="fade-up" data-aos-delay="300">
+                <div class="overlay"><a href="#">View Project →</a></div>
+                <h4>Enterprise Dashboard</h4>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section id="testimonials">
-        <div class="section-header">
+    <section id="testimonials" style="background:rgba(0,0,0,0.3);">
+        <div class="section-header" data-aos="fade-up">
             <h2>What Clients Say</h2>
         </div>
         <div class="grid">
-            <div class="testimonial">
-                <p>“Fast, professional, clean code. They delivered our entire platform ahead of schedule — best dev team
-                    we’ve worked with.”</p>
-                <p style="color: var(--primary); font-weight: 700; margin-top: 20px;">— Sarah Chen, CEO</p>
+            <div class="testimonial" data-aos="fade-right">
+                <p>“They delivered our platform faster than promised and the quality is insane. Best development partner
+                    we’ve ever had.”</p>
+                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">— Sarah Chen,
+                    CEO</p>
             </div>
-            <div class="testimonial">
-                <p>“Transformed our outdated system into a modern, high-performance product. Sales increased
-                    dramatically.”</p>
-                <p style="color: var(--primary); font-weight: 700; margin-top: 20px;">— Michael Rodriguez, Founder</p>
+            <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
+                <p>“Completely transformed our outdated system. Conversions up over 300% in just 4 months.”</p>
+                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">— Michael R.,
+                    Founder</p>
             </div>
-            <div class="testimonial">
-                <p>“10/10 communication and execution. Would hire again in a heartbeat.”</p>
-                <p style="color: var(--primary); font-weight: 700; margin-top: 20px;">— Priya Patel, CTO</p>
+            <div class="testimonial" data-aos="fade-left" data-aos-delay="200">
+                <p>“Professional, fast, great communication. Will definitely work with them again.”</p>
+                <p style="margin-top:1.5rem; font-style:normal; color:var(--primary); font-weight:600;">— Priya Patel,
+                    CTO</p>
             </div>
         </div>
     </section>
 
     <!-- Contact -->
     <section id="contact">
-        <div class="section-header">
-            <h2>Let's Build Something Great</h2>
+        <div class="section-header" data-aos="fade-up">
+            <h2>Start Your Project</h2>
         </div>
-
         <div class="contact-grid">
-            <form action="https://formspree.io/f/your-id" method="POST">
+            <form id="contact-form" action="https://formspree.io/f/your-id" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required />
                 <input type="email" name="email" placeholder="Business Email" required />
-                <textarea name="message" placeholder="Tell us about your project..." required></textarea>
-                <button type="submit" class="btn btn-main" style="width: 100%; cursor: pointer;">Send Message</button>
+                <input type="text" name="company" placeholder="Company (optional)" />
+                <textarea name="message" placeholder="Tell us about your idea or project..." required></textarea>
+                <button type="submit" class="btn btn-primary"
+                    style="width:100%; padding:1.2rem; font-size:1.1rem; cursor:pointer;">
+                    Send Message
+                </button>
+                <div id="form-message"></div>
             </form>
-
-            <div>
-                <h3 style="font-family: 'Rajdhani'; font-size: 2.2rem; margin-bottom: 24px;">Get in Touch</h3>
-                <p style="margin-bottom: 16px; color: var(--text-dim);">
-                    <i class="fa-solid fa-envelope" style="color: var(--primary); margin-right: 12px;"></i>
-                    hello@nexusdev.com
+            <div style="padding:1rem 0;" data-aos="fade-left">
+                <h3 style="font-family:'Rajdhani'; font-size:2.2rem; margin-bottom:1.8rem;">Get in Touch</h3>
+                <p style="margin-bottom:1.2rem; color:var(--text-dim);">
+                    <i class="fa fa-envelope" style="color:var(--primary); margin-right:12px;"></i>
+                    hello@nexusdev.studio
                 </p>
-                <p style="margin-bottom: 32px; color: var(--text-dim);">
-                    <i class="fa-solid fa-location-dot" style="color: var(--primary); margin-right: 12px;"></i>
+                <p style="margin-bottom:2.5rem; color:var(--text-dim);">
+                    <i class="fa fa-location-dot" style="color:var(--primary); margin-right:12px;"></i>
                     Remote — Worldwide
                 </p>
-
-                <div style="font-size: 1.8rem; display: flex; gap: 24px;">
+                <div style="font-size:2rem; display:flex; gap:1.5rem;">
                     <i class="fab fa-linkedin"></i>
-                    <i class="fab fa-github"></i>
                     <i class="fab fa-twitter"></i>
+                    <i class="fab fa-github"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Back to Top -->
-    <button id="backToTop">
-        <i class="fa-solid fa-chevron-up"></i>
-    </button>
-
-    <footer style="padding: 60px 5%; text-align: center; color: #444; border-top: 1px solid var(--border);">
-        © 2025 NEXUSDEV. All Rights Reserved.
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 NEXUSDEV STUDIO — Built for companies that want to win.</p>
     </footer>
 
+    <!-- Back to Top -->
+    <button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
+        AOS.init({ duration: 800, once: true, easing: 'ease-out' });
+
         // Progress Bar
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById("progress-bar").style.width = scrolled + "%";
+            document.getElementById('progress-bar').style.width = scrolled + '%';
         });
 
-        // Particle Canvas
+        // Navbar scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
+        });
+
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        // Particles (hero background)
         const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -576,15 +801,13 @@
                 this.size = Math.random() * 2.2 + 0.4;
                 this.speedX = Math.random() * 0.6 - 0.3;
                 this.speedY = Math.random() * 0.6 - 0.3;
-                this.opacity = Math.random() * 0.4 + 0.2;
+                this.opacity = Math.random() * 0.5 + 0.2;
             }
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
             }
             draw() {
                 ctx.fillStyle = `rgba(0, 242, 255, ${this.opacity})`;
@@ -596,50 +819,72 @@
 
         function initParticles() {
             particles = [];
-            for (let i = 0; i < 90; i++) {
-                particles.push(new Particle());
-            }
+            for (let i = 0; i < 90; i++) particles.push(new Particle());
         }
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animateParticles);
         }
-
         initParticles();
         animateParticles();
 
-        // Mobile Menu
+        // Mobile menu
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
-
-        hamburger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-
+        hamburger.addEventListener('click', () => nav.classList.toggle('active'));
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
+            link.addEventListener('click', () => nav.classList.remove('active'));
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            themeToggle.innerHTML = document.body.classList.contains('light-mode')
+                ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Stats counter
+        const counters = document.querySelectorAll('[data-count]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-count');
+                        let count = 0;
+                        const increment = target / 80;
+                        const timer = setInterval(() => {
+                            count += increment;
+                            counter.textContent = Math.ceil(count);
+                            if (count >= target) {
+                                counter.textContent = target;
+                                clearInterval(timer);
+                            }
+                        }, 20);
+                    });
+                    observer.disconnect();
+                }
             });
-        });
+        }, { threshold: 0.5 });
+        observer.observe(document.getElementById('stats'));
 
-        // Back to Top
-        const backToTop = document.getElementById('backToTop');
-
+        // Back to top
+        const backBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('show');
-            } else {
-                backToTop.classList.remove('show');
-            }
+            backBtn.classList.toggle('show', window.scrollY > 400);
         });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Contact form feedback (demo)
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            // e.preventDefault(); // Uncomment to prevent real submit for demo
+            const msg = document.getElementById('form-message');
+            msg.textContent = "Message sent successfully! We'll get back to you soon.";
+            msg.className = 'success';
+            msg.style.display = 'block';
+            setTimeout(() => { msg.style.display = 'none'; }, 5000);
         });
     </script>
 </body>
