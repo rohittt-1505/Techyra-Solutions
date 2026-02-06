@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NexusDev • Custom Software & Digital Solutions</title>
+    <title>• Techyra Solutions</title>
     <meta name="description"
         content="We build high-performance websites, web apps, mobile apps and enterprise software for ambitious businesses." />
 
@@ -100,6 +100,7 @@
         }
 
         .nav-links a {
+            position: relative;
             color: var(--text-dim);
             text-decoration: none;
             font-weight: 600;
@@ -109,9 +110,30 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover,
+        /* Underline base */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        /* Hover underline */
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Active underline */
         .nav-links a.active {
             color: var(--primary);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
         }
 
         .hamburger {
@@ -410,7 +432,7 @@
 
     <!-- Header -->
     <header id="header">
-        <a href="#" class="logo">NEXUS<span>DEV</span></a>
+        <a href="#" class="logo">Tech<span>yra</span></a>
 
         <nav class="nav-links" id="nav">
             <a href="#home">Home</a>
