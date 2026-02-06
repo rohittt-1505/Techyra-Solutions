@@ -482,7 +482,7 @@
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 75%;
+                width: 90%;
                 height: 100vh;
                 background: #000;
                 flex-direction: column;
@@ -1044,11 +1044,19 @@
             nav.classList.toggle('active');
 
             if (nav.classList.contains('active')) {
+
                 menuIcon.classList.remove('fa-bars');
                 menuIcon.classList.add('fa-xmark');
+
+                document.body.style.overflow = "hidden";   // 🔥 SCROLL OFF
+
             } else {
+
                 menuIcon.classList.remove('fa-xmark');
                 menuIcon.classList.add('fa-bars');
+
+                document.body.style.overflow = "auto";     // 🔥 SCROLL ON
+
             }
 
         });
