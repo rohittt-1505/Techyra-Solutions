@@ -1085,7 +1085,16 @@
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
+
                 nav.classList.remove('active');
+
+                // 🔥 icon wapas 3 lines karo
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+
+                // 🔥 scroll wapas enable
+                document.body.style.overflow = "auto";
+
             });
         });
 
