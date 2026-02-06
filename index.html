@@ -472,6 +472,10 @@
             box-shadow: 0 0 25px var(--primary);
         }
 
+        .hamburger i {
+            transition: 0.3s ease;
+        }
+
         @media (max-width: 992px) {
 
             .nav-links {
@@ -531,7 +535,7 @@
         </nav>
 
         <div class="hamburger" id="hamburger">
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-bars" id="menuIcon"></i>
         </div>
     </header>
 
@@ -1033,8 +1037,20 @@
         const hamburger = document.getElementById('hamburger');
         const nav = document.getElementById('nav');
 
+        const menuIcon = document.getElementById('menuIcon');
+
         hamburger.addEventListener('click', () => {
+
             nav.classList.toggle('active');
+
+            if (nav.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            } else {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            }
+
         });
 
         document.querySelectorAll('.nav-links a').forEach(link => {
